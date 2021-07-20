@@ -5,8 +5,6 @@ var inputInitials = document.querySelector('#student-initials');
 var listOfResponses = document.querySelector('.responses');
 var submitButton = document.querySelector('.submit-button');
 var questions = document.querySelector('.question');
-var currentQuestion = 0;
-var numOfCorrectResponses = 0;
 var li1 = document.querySelector('.response-1');
 var li2 = document.querySelector('.response-2');
 var li3 = document.querySelector('.response-3');
@@ -39,36 +37,40 @@ var myQuestions =  [
     }
 ];
 
-var number = 1;
+var index = -1;
+var numOfCorrectResponses = 0;
+
 
 // button to start quiz
 startButton.addEventListener('click', openQuestions);
 
-i = 0;
-// pop up questions
-function openQuestions() {
-    for (i = 0; i < myQuestions.length; i++) {
-        currentQuestion = i
-        questions.textContent = myQuestions[i].question;
-        li1.textContent = myQuestions[i].a;
-        li2.textContent = myQuestions[i].b;
-        li3.textContent = myQuestions[i].c;
-        li4.textContent = myQuestions[i].d;
-
-        listOfResponses.addEventListener('click', function(event) {
-            var response = event.target.textContent;
-
-            if (response == myQuestions[currentQuestion].correctAnswer) {
-                numOfCorrectResponses++;
-                openQuestions();
-            } else {
-                openQuestions();
-            }
-        }   
-)}};
+// displays quiz questions
+function openQuestions () {
+    index = index + 1
     
+    if (myQuestions[index] === undefined) {
+        console.log('Quiz is done');
+        return;
+    } else {
+        questions.textContent = myQuestions[index].question;
+            li1.textContent = myQuestions[index].a;
+            li2.textContent = myQuestions[index].b;
+            li3.textContent = myQuestions[index].c;
+            li4.textContent = myQuestions[index].d;
+    }
+}
 
-// total correct responses
+// clicking an answer displays the next question
+listOfResponses.addEventListener('click', function(event) {
+    var response = event.target.textContent;
+    
+    if (response == myQuestions[index].correctAnswer) {
+        numOfCorrectResponses++;
+        openQuestions();
+    } else {
+        openQuestions();
+    }
+})
 
 
 // timer
@@ -90,7 +92,6 @@ countdown();
 
 // input initials
 function saveInitials(event) {
-    event.preventDefault();
     var studentInitials = {
         initials: inputInitials.value};
     localStorage.setItem('studentInitials', JSON.stringify(studentInitials));

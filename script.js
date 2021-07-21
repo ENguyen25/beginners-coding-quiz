@@ -9,6 +9,7 @@ var li1 = document.querySelector('.response-1');
 var li2 = document.querySelector('.response-2');
 var li3 = document.querySelector('.response-3');
 var li4 = document.querySelector('.response-4');
+var showScores = document.querySelector('.render-high-scores');
 var secondsLeft = 11;
 var myQuestions =  [
     {
@@ -42,15 +43,24 @@ var numOfCorrectResponses = 0;
 
 
 // button to start quiz
-startButton.addEventListener('click', openQuestions);
+startButton.addEventListener('click', function () {
+    document.querySelector('.list-of-questions').classList.toggle('hidden');
+    document.querySelector('.start-quiz').classList.toggle('hidden');
+    countdown();
+    openQuestions();
+});
 
 // displays quiz questions
 function openQuestions () {
+
     index = index + 1
     
     if (myQuestions[index] === undefined) {
         console.log('Quiz is done');
-        return;
+        document.querySelector('.input-initials').classList.toggle('hidden');
+        document.querySelector('.list-of-questions').classList.toggle('hidden');
+        document.querySelector('.timer').classList.toggle('hidden');
+        saveHighScores();        
     } else {
         questions.textContent = myQuestions[index].question;
             li1.textContent = myQuestions[index].a;
@@ -88,13 +98,28 @@ function countdown() {
 
 }
 
-countdown();
-
 // input initials
 function saveInitials(event) {
+    event.preventDefault();
     var studentInitials = {
         initials: inputInitials.value};
     localStorage.setItem('studentInitials', JSON.stringify(studentInitials));
-
+    document.querySelector('.input-initials').classList.toggle('hidden');
+    document.querySelector('.show-high-scores').classList.toggle('hidden');
+    renderHighScores();
 }
-submitButton.addEventListener("click", saveInitials);
+
+function saveHighScores() {
+    var highScores = {
+        scores: numOfCorrectResponses};
+    console.log(highScores);
+    localStorage.setItem('highScores', JSON.stringify(highScores));
+}
+
+function renderHighScores() {
+    var studentInitials = JSON.parse(localStorage.getItem("studentInitials"));
+    var highScores = JSON.parse(localStorage.getItem("highScores"));
+    showScores.textContent = studentInitials.initials + " - " + highScores.scores;
+}
+
+document.querySelector('.submit-button').addEventListener('click', saveInitials);

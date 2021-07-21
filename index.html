@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="style.css"></script>
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
-
+    
     <!-- Timer -->
     <div class="timer"></div>
 
@@ -19,8 +19,9 @@
         <button class="start-button">Start Quiz</button>
     </div>
 
+
     <!-- Block of questions -->
-    <div class="list-of-questions">
+    <div class="list-of-questions hidden">
 
         <!-- Question -->
         <h1 class="question"></h1>
@@ -35,12 +36,17 @@
 
     </div>
 
-    <div class="input-initials">
+    <div class="input-initials hidden">
         <form>
             <label for="initials">Name</label>
             <input type="text" id="student-initials" name="initials"/>
             <button class="submit-button">Submit</button>
         </form>
+    </div>
+
+    <div class="show-high-scores hidden">
+        <h1>High Score</h1>
+        <p class="render-high-scores"></p>
     </div>
 
 </body>

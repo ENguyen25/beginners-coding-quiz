@@ -199,11 +199,13 @@ viewScores.addEventListener('click', function() {
     renderHighScores();
     document.querySelector('.show-high-scores').classList.toggle('hidden');
     document.querySelector('.start-quiz').classList.toggle('hidden');
+    document.querySelector('.render-high-scores').classList.remove('hidden');
 });
 
 backButton.addEventListener('click', function() {
     document.querySelector('.start-quiz').classList.toggle('hidden');
     document.querySelector('.show-high-scores').classList.toggle('hidden');
+    document.querySelector('.render-high-scores').classList.remove('hidden');
 });
 
 clearButton.addEventListener('click', function() {

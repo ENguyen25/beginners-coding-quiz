@@ -1,9 +1,9 @@
-// list of variables
+// List of variables
 var startButton = document.querySelector('.start-button');
 var submitButton = document.querySelector('.submit-button');
-var viewScores = document.querySelector('.view-highscores');
 var backButton = document.querySelector('.back-button');
 var clearButton = document.querySelector('.clear-button');
+var viewScores = document.querySelector('.view-highscores');
 var timer = document.querySelector('.timer');
 var inputInitials = document.querySelector('#student-initials');
 var listOfResponses = document.querySelector('.responses');
@@ -14,6 +14,7 @@ var li3 = document.querySelector('.response-3');
 var li4 = document.querySelector('.response-4');
 var showScores = document.querySelector('.render-high-scores');
 var secondsLeft = 76;
+
 var myQuestions =  [
     {
         question: "A very useful tool used during development and debugging for printing content to the debugger is:",
@@ -101,7 +102,7 @@ var index = -1;
 var numOfCorrectResponses = 0;
 
 
-// button to start quiz
+// Button to start quiz
 startButton.addEventListener('click', function () {
     document.querySelector('.list-of-questions').classList.toggle('hidden');
     document.querySelector('.start-quiz').classList.toggle('hidden');
@@ -110,7 +111,7 @@ startButton.addEventListener('click', function () {
     openQuestions();
 });
 
-// displays quiz questions
+// Displays quiz questions, clicking an answer displays the next question
 function openQuestions () {
 
     index = index + 1
@@ -118,7 +119,6 @@ function openQuestions () {
     if (myQuestions[index] === undefined) {
         document.querySelector('.input-initials').classList.toggle('hidden');
         document.querySelector('.list-of-questions').classList.toggle('hidden');
-        // document.querySelector('.timer').classList.toggle('hidden');
         document.getElementById('saved-grade').innerHTML = numOfCorrectResponses;
         saveHighScores();
         numOfCorrectResponses = 0;
@@ -132,7 +132,7 @@ function openQuestions () {
     }
 }
 
-// clicking an answer displays the next question
+// Checks if response is right or wrong
 listOfResponses.addEventListener('click', function(event) {
     var response = event.target.textContent;
     
@@ -146,7 +146,7 @@ listOfResponses.addEventListener('click', function(event) {
 })
 
 
-// timer
+// Sets timer
 function countdown() {
 
     var timeInterval = setInterval(function () {
@@ -157,7 +157,6 @@ function countdown() {
             clearInterval(timeInterval);
             document.querySelector('.input-initials').classList.toggle('hidden');
             document.querySelector('.list-of-questions').classList.toggle('hidden');
-            // document.querySelector('.timer').classList.toggle('hidden');
             document.getElementById('saved-grade').innerHTML = numOfCorrectResponses;
             saveHighScores(); 
         } else if (myQuestions[index] === undefined) {
@@ -168,7 +167,7 @@ function countdown() {
 
 }
 
-// input initials
+// Input initials
 function saveInitials(event) {
     event.preventDefault();
     var studentInitials = {
@@ -180,6 +179,7 @@ function saveInitials(event) {
     renderHighScores();
 }
 
+// Saves score to local storage
 function saveHighScores() {
     var highScores = {
         scores: numOfCorrectResponses};
@@ -187,12 +187,14 @@ function saveHighScores() {
     localStorage.setItem('highScores', JSON.stringify(highScores));
 }
 
+// Renders score from local storage
 function renderHighScores() {
     var studentInitials = JSON.parse(localStorage.getItem("studentInitials"));
     var highScores = JSON.parse(localStorage.getItem("highScores"));
     showScores.textContent = studentInitials.initials + " - " + highScores.scores;
 }
 
+// Buttons to submit initials, view scoreboard, return to start of quiz, and clear scoreboard
 submitButton.addEventListener('click', saveInitials);
 
 viewScores.addEventListener('click', function() {

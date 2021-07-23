@@ -21,9 +21,7 @@ You can access the quiz at this website: https://enguyen25.github.io/beginners-c
 
 5. The "Go Back" button takes you back to the start of the quiz. The "Clear High Scores" button hides the scoreboard. You can click on "View Highscore" to show the scoreboard.
 
-```md
-![Screenshot of quiz] (assets/images/screenshot.gif)
-```
+    ![Screenshot of quiz](./assets/images/screenshot.gif)
 
 
 ## License

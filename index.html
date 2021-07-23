@@ -5,49 +5,66 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Coding Quiz Challenge</title>
 </head>
 <body>
     
-    <!-- Timer -->
-    <div class="timer"></div>
+    <header>
+        
+        <!-- View High Scores -->
+        <div class="view-highscores">View highscores</div>
+        <!-- Timer -->
+        <div class="timer">Time: 0</div>
 
-    <!-- Button to start quiz -->
-    <div class="start-quiz">
-        <h1 class="header">Coding Quiz</h1>
-        <p class="description">Click button to start quiz</p>
-        <button class="start-button">Start Quiz</button>
+    </header>
+
+    <div class="container">
+
+        <!-- Button to start quiz -->
+        <div class="start-quiz">
+            <h1 class="header">Coding Quiz Challenge</h1>
+            <p class="description">Try to answer the following code-related questions within the time limit. Keep in mind that the incorrect answers will penalize your score/time by 10 seconds!</p>
+            <button class="start-button">Start Quiz</button>
+        </div>
+    
+    
+        <!-- Block of questions -->
+        <div class="list-of-questions hidden">
+    
+            <!-- Question -->
+            <h2 class="question"></h1>
+    
+            <!-- Responses -->
+            <ul class="responses">
+                <li class="response-1"></li>
+                <li class="response-2"></li>
+                <li class="response-3"></li>
+                <li class="response-4"></li>
+            </ul>
+    
+        </div>
+    
+        <div class="input-initials hidden">
+            <h1>All done!</h1>
+            <p>Your final score is <span id="saved-grade"></span>.</p>
+            <form>
+                <label for="initials">Name</label>
+                <input type="text" id="student-initials" name="initials"/>
+                <button class="submit-button">Submit</button>
+            </form>
+        </div>
+    
+        <div class="show-high-scores hidden">
+            <h1>High Scores</h1>
+            <p class="render-high-scores"></p>
+            <div style="display: flex; flex-direction: row;">
+                <button class="back-button">Go Back</button>
+                <button class="clear-button">Clear High Scores</button>
+            </div>
+        </div>
+
     </div>
 
-
-    <!-- Block of questions -->
-    <div class="list-of-questions hidden">
-
-        <!-- Question -->
-        <h1 class="question"></h1>
-
-        <!-- Responses -->
-        <ol class="responses">
-            <li class="response-1"></li>
-            <li class="response-2"></li>
-            <li class="response-3"></li>
-            <li class="response-4"></li>
-        </ol>
-
-    </div>
-
-    <div class="input-initials hidden">
-        <form>
-            <label for="initials">Name</label>
-            <input type="text" id="student-initials" name="initials"/>
-            <button class="submit-button">Submit</button>
-        </form>
-    </div>
-
-    <div class="show-high-scores hidden">
-        <h1>High Score</h1>
-        <p class="render-high-scores"></p>
-    </div>
 
 </body>
 <script src="script.js"></script>

@@ -1,3 +1,80 @@
 .hidden {
     display: none;
 }
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.start-quiz {
+    text-align: center;
+}
+
+.start-quiz, .list-of-questions {
+    width: 40%;
+}
+
+.start-button, .submit-button, .back-button, .clear-button, li {
+    background: linear-gradient(
+        rgba(60, 150, 107, 0.8),
+        rgba(60, 150, 107, 0.6)
+    );
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
+.start-button {
+    padding: 2% 5%;
+    font-size: large;
+}
+
+.submit-button, .back-button, .clear-button {
+    padding: 5px 10px;
+    font-size: medium;
+}
+
+.back-button {
+    margin-right: 10px;
+}
+
+button:hover, li:hover {
+    opacity: 75%;
+    cursor: pointer;
+}
+
+.description, .responses, label, .render-high-scores {
+    font-size: large;
+}
+
+.view-highscores {
+    color: rgb(39, 104, 73);
+    cursor: pointer;
+}
+
+.render-high-scores {
+    background-color: rgb(184, 235, 210);
+    padding: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li {
+    padding: 10px 20px;
+    margin-bottom: 5px;
+    font-size: large;
+}
